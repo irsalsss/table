@@ -19,7 +19,7 @@ const InputSelect = ({ defaultValue, options, onChange, unique }) => {
           key={v.id} 
           value={unique ? v[unique] : v.value || v.name}
         >
-          {v.value || v.name}
+          {v.label || v.name}
         </Option>
       ))}
     </Select>
