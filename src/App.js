@@ -3,7 +3,7 @@ import { Offline, Online } from "react-detect-offline";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/Loading';
-// import { MainProvider } from './context/MainContext';
+import { MainProvider } from './context/MainContext';
 import OfflineContent from './components/OfflineContent';
 
 const MainPage = lazy(() => import('./pages/MainPage'))
@@ -15,7 +15,7 @@ const App = () => {
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <ErrorBoundary FallbackComponent={ErrorPage}>
-          {/* <MainProvider> */}
+          <MainProvider>
             <Offline>
               <OfflineContent />
             </Offline>
@@ -25,7 +25,7 @@ const App = () => {
                 <Route component={NotFound} />
               </Switch>
             </Online>
-          {/* </MainProvider> */}
+          </MainProvider>
         </ErrorBoundary>
       </BrowserRouter>
     </Suspense>
