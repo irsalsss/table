@@ -2,8 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
-module.exports = {
-  mode: 'production',
+const config = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
@@ -13,7 +12,6 @@ module.exports = {
     port: 5000,
     historyApiFallback: true,
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -80,4 +78,13 @@ module.exports = {
     extensions: [".js", ".jsx", ".css", ".scss", ".json", ".svg", ".png"],
     modules: [ path.resolve(__dirname, 'app'), 'node_modules']
   }
+}
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'inline-source-map';
+  }
+
+  return config;
 };
+
