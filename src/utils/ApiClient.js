@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-async function client(endpoint, { body, method, params, additionalConfig } = {}){
+const client = async(endpoint, { body, method, params, additionalConfig } = {}) => {
   const Axios = axios.create();
 
   let headers = {
