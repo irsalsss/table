@@ -14,7 +14,8 @@ const InputSelect = ({
 }) => {
 
   return (
-    <Select 
+    <Select
+      data-testid="InputSelect"
       placeholder='Please select the user name'
       className={className}
       style={{ width: 300 }} 
