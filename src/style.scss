@@ -194,7 +194,6 @@
 
 .container-filter {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
 }
 
@@ -231,31 +230,10 @@
     -webkit-box-orient: vertical;
 }
 
-.container-post-card {
-    width: 600px;
-}
-
 @media only screen and (max-width: 600px)  {
     .container-filter {
         display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .wrapper-filter {
-        padding-bottom: 0.5rem;
-    }
-
-    .container-post-card {
-        width: 400px;
-    }
-}
-
-@media only screen and (max-width: 400px)  {
-    .container-photo-card {
-        width: 300px !important;
-    }
-
-    .container-post-card {
-        width: 300px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
