@@ -4,7 +4,14 @@ import PropTypes from "prop-types";
 
 const { Option } = Select;
 
-const InputSelect = ({ defaultValue, options, onChange, unique, className }) => {
+const InputSelect = ({ 
+  defaultValue,
+  options,
+  onChange,
+  unique,
+  className,
+  value
+}) => {
 
   return (
     <Select 
@@ -13,6 +20,7 @@ const InputSelect = ({ defaultValue, options, onChange, unique, className }) => 
       style={{ width: 300 }} 
       onChange={onChange}
       defaultValue={defaultValue}
+      value={value}
     >
       {options.map((v) => (
         <Option 
@@ -33,6 +41,10 @@ InputSelect.propTypes = {
     PropTypes.number,
     PropTypes.string
   ]),
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
   options: PropTypes.array,
   onChange: PropTypes.func,
 }
@@ -41,6 +53,7 @@ InputSelect.defaultProps = {
   unique: '',
   className: '',
   defaultValue: null,
+  value: null,
   options: [],
   onChange: () => {},
 };

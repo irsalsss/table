@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, createContext, useCallback } fr
 import { useHistory, useLocation } from "react-router-dom";
 import { getUsers } from '../client/MainApi';
 import { errorNotif, successNotif } from '../utils/Utils';
+import { throttle, debounce } from 'lodash';
 
 const MainContext = createContext(null);
 
@@ -11,9 +12,9 @@ export const MainProvider = (props) => {
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchKeyword, setSearchKeyword] = useState('');
   const [filterGender, setFilterGender] = useState('all');
   const [currentPage, setCurentPage] = useState(1);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const onSearch = (e) => {
     setSearchKeyword(e.target.value);

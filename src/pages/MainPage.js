@@ -11,8 +11,10 @@ const MainPage = () => {
   const {
     users,
     isLoading,
-    filterGender, onFilterGender,
+    searchKeyword,
     onSearch,
+    onResetFilter,
+    filterGender, onFilterGender,
     currentPage, onChangePage
   } = useMainContext();
 
@@ -43,11 +45,12 @@ const MainPage = () => {
           allowClear 
           onChange={onSearch}
           className='mr-3 mb-3'
-          style={{ width: 300 }} 
+          style={{ width: 300 }}
+          value={searchKeyword}
         />
 
-        <InputSelect className='mr-3 mb-3' defaultValue={filterGender} options={FILTER_OPTIONS} onChange={onFilterGender} />
-        <Button className='mb-3' onClick={() => {}}>Reset Filter</Button>
+        <InputSelect className='mr-3 mb-3' value={filterGender} options={FILTER_OPTIONS} onChange={onFilterGender} />
+        <Button className='mb-3' onClick={onResetFilter}>Reset Filter</Button>
       </div>
 
       <div className='pt-2 px-3'>
