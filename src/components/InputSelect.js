@@ -1,15 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { memo } from 'react';
 import { Select } from 'antd';
 import PropTypes from "prop-types";
 
 const { Option } = Select;
 
-const InputSelect = ({ defaultValue, options, onChange, unique }) => {
+const InputSelect = ({ defaultValue, options, onChange, unique, className }) => {
 
   return (
     <Select 
       placeholder='Please select the user name'
-      className='mr-3'
+      className={className}
       style={{ width: 300 }} 
       onChange={onChange}
       defaultValue={defaultValue}
@@ -28,6 +28,7 @@ const InputSelect = ({ defaultValue, options, onChange, unique }) => {
 
 InputSelect.propTypes = {
   unique: PropTypes.string,
+  className: PropTypes.string,
   defaultValue: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
@@ -38,9 +39,10 @@ InputSelect.propTypes = {
 
 InputSelect.defaultProps = {
   unique: '',
+  className: '',
   defaultValue: null,
   options: [],
   onChange: () => {},
 };
 
-export default InputSelect
+export default memo(InputSelect)
