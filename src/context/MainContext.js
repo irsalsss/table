@@ -3,6 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { getUsers } from '../client/MainApi';
 import { errorNotif, successNotif } from '../utils/Utils';
 import { throttle, debounce } from 'lodash';
+import useDebounce from '../hook/useDebounce';
 
 const MainContext = createContext(null);
 
@@ -15,6 +16,7 @@ export const MainProvider = (props) => {
   const [filterGender, setFilterGender] = useState('all');
   const [currentPage, setCurentPage] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState('');
+  const debounceSearch = useDebounce(searchKeyword, 500)
 
   const onSearch = (e) => {
     setSearchKeyword(e.target.value);
@@ -58,7 +60,7 @@ export const MainProvider = (props) => {
 
   useEffect(() => {
     _getUsers();
-  }, [currentPage, filterGender])
+  }, [currentPage, filterGender, debounceSearch])
   
   return (
     <MainContext.Provider 
