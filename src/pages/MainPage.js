@@ -25,13 +25,19 @@ const MainPage = () => {
       title,
       width: 'left',
       sorter: (a, b) => get(a, key, '').localeCompare(get(b, key, '')),
-      render: (_, record) => get(record, key, ''),
+      render: (_, record) => {
+        if (key === 'fullName'){
+          return `${get(record, 'name.first', '')} ${get(record, 'name.last', '')}`
+        }
+        
+        return get(record, key, '')
+      },
     };
   }
 
   const columns = [
     { ...(makeCell('login.username', 'Username')) },
-    { ...(makeCell('name.first', 'Name')) },
+    { ...(makeCell('fullName', 'Name')) },
     { ...(makeCell('email', 'Email')) },
     { ...(makeCell('gender', 'Gender')) },
     { ...(makeCell('registered.date', 'Registered Date')) },

@@ -1,10 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-const client = async(endpoint, { body, method, params, additionalConfig } = {}) => {
+const client = async(endpoint, { body, method, params, additionalConfig, cancelToken } = {}) => {
   const Axios = axios.create();
-  const CancelToken = axios.CancelToken.source();
-
 
   let headers = {
     "Content-type": "application/json; charset=UTF-8",
@@ -13,7 +11,7 @@ const client = async(endpoint, { body, method, params, additionalConfig } = {}) 
   let config = {
     url: endpoint,
     method,
-    cancelToken: CancelToken.cancel(),
+    cancelToken,
     headers: {
       ...headers
     },
