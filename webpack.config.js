@@ -13,14 +13,15 @@ module.exports = {
     port: 5000,
     historyApiFallback: true,
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
