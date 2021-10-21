@@ -27,4 +27,16 @@ describe('Input select component', () => {
     const { input } = setup();
     expect(input).toHaveTextContent('All')
   })
+
+  it('should change the value', () => {
+    const { input, rerender } = setup();
+    rerender(
+      <InputSelect 
+        className='mr-3 mb-3'
+        value="male"
+        options={FILTER_OPTIONS}
+      />
+    )
+    expect(input).toHaveTextContent('Male')
+  })
 })
