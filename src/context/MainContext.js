@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext, createContext, useCallback } from 'react';
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getUsers } from '../client/MainApi';
-import { errorNotif, successNotif } from '../utils/Utils';
-import { throttle, debounce } from 'lodash';
+import { errorNotif } from '../utils/Utils';
 import useDebounce from '../hook/useDebounce';
 
 const MainContext = createContext(null);
 
 export const MainProvider = (props) => {
   const history = useHistory();
-  const { pathname } = useLocation();
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
