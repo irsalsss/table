@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require('path');
 
 const config = {
@@ -77,7 +78,13 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx", ".css", ".scss", ".json", ".svg", ".png"],
     modules: [ path.resolve(__dirname, 'app'), 'node_modules']
-  }
+  },
+
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
+    ],
+  },
 }
 
 module.exports = (env, argv) => {
